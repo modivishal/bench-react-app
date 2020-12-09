@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import { Table } from 'react-bootstrap';
-import Trasnsactions from './components/Trasnsactions';
+import { Table } from "react-bootstrap";
+import Trasnsactions from "./components/Trasnsactions";
+
+
+
 
 const App = () => {
   const [trasnsactions, setTrasnsactions] = useState([]);
@@ -11,11 +14,12 @@ const App = () => {
   const [txnPerPage] = useState(10);
 
   useEffect(() => {
-    const fetchTrasnsactions = async () => {
+    const fetchTrasnsactions = async (pageCount) => {
       setLoading(true);
-      const res = await axios.get('https://resttest.bench.co/transactions/1.json');
-      setTrasnsactions(res.data.transactions);
+      const res = await axios.get(`http://localhost:3000/`);
+      setTrasnsactions(res.data);
       setLoading(false);
+     
     };
 
     fetchTrasnsactions();
@@ -24,11 +28,11 @@ const App = () => {
   // console.log("++++++++++",trasnsactions);
 
   return (
-    <div className='container mt-5'>
-      <h1 className='text-primary mb-3'>Bench Test</h1>
-      <ul className='mb-4'>
-      <Trasnsactions trasnsactions={trasnsactions} loading={loading} />
-    </ul>
+    <div className="container mt-5">
+      <h1 className="text-primary mb-3">Bench Test</h1>
+      <ul className="mb-4">
+        <Trasnsactions trasnsactions={trasnsactions} loading={loading} />
+      </ul>
     </div>
   );
 };
