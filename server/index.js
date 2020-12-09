@@ -12,6 +12,7 @@ app.get("/", async (req, res) => {
   let transactionData = []
   let totalCount;
 
+  //This code fetches all transactions from all pages
   const fetchTrasnsactions = async () => {
     try {
       do {
