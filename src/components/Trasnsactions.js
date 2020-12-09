@@ -22,7 +22,7 @@ const Trasnsactions = ({ trasnsactions, loading }) => {
           <th>Date</th>
           <th>Company</th>
           <th>Account</th>
-          <th>{getTotals()}</th>
+          <th>${getTotals()}</th>
         </tr>
       </thead>
       {trasnsactions.map((trasnsaction) => (
@@ -31,7 +31,7 @@ const Trasnsactions = ({ trasnsactions, loading }) => {
           <td>{trasnsaction.Date}</td>
           <td>{trasnsaction.Ledger}</td>
           <td>{trasnsaction.Company}</td>
-          <td>{trasnsaction.Amount}</td>
+          <td>${trasnsaction.Amount}</td>
         </tr>
       </tbody>
       ))}
