@@ -7,6 +7,6 @@ In the project directory, you can run:
 
 npm install
 
-npm start-server
+npm start-server : To run the rest api
 
-npm run start
+npm run start : To run the react app 
