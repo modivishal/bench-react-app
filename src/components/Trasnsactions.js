@@ -2,6 +2,15 @@ import React from "react";
 import { Table } from "react-bootstrap";
 
 const Trasnsactions = ({ trasnsactions, loading }) => {
+
+  const getTotals = () => {
+    let total = 0;
+    trasnsactions.forEach(trasnsaction => {
+      total += parseInt(trasnsaction.Amount);
+    });
+    return total;
+  };
+
   if (loading) {
     return <h2>Loading...</h2>;
   }
@@ -13,7 +22,7 @@ const Trasnsactions = ({ trasnsactions, loading }) => {
           <th>Date</th>
           <th>Company</th>
           <th>Account</th>
-          <th>Total</th>
+          <th>{getTotals()}</th>
         </tr>
       </thead>
       {trasnsactions.map((trasnsaction) => (
