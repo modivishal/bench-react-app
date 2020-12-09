@@ -1,20 +1,30 @@
 const path = require("path");
 
 module.exports = {
-  devServer: {
-    contentBase: path.resolve(__dirname, "./src"),
-    historyApiFallback: true
+  entry: "./src/app.js",
+  output: {
+    path: path.join(__dirname, "public"),
+    filename: "bundle.js",
   },
-  entry: path.resolve(__dirname, "./src/index.js"),
   module: {
     rules: [
       {
         test: /\.js$/,
-        use: "babel-loader"
-      }
-    ]
+        exclude: /node_modules/,
+        loader: "babel-loader",
+      },
+      // {
+      //   test: /\.css$/,
+      //   use: ['style-loader', 'css-loader']
+      // }
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+    ],
   },
-  output: {
-    filename: "bundle.js"
-  }
+  devtool: "cheap-module-eval-source-map",
+  devServer: {
+    contentBase: path.join(__dirname, "public"),
+  },
 };
