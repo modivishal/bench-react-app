@@ -1,4 +1,5 @@
 import React from "react";
+import { Table } from "react-bootstrap";
 
 const Trasnsactions = ({ trasnsactions, loading }) => {
   if (loading) {
@@ -6,11 +7,26 @@ const Trasnsactions = ({ trasnsactions, loading }) => {
   }
 
   return (
-    <ul className="list-group mb-4">
-      {trasnsactions.map((trasnsaction, index) => (
-        <li key={index}>{trasnsaction.Date}</li>
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Company</th>
+          <th>Account</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      {trasnsactions.map((trasnsaction) => (
+      <tbody>
+        <tr>
+          <td>{trasnsaction.Date}</td>
+          <td>{trasnsaction.Ledger}</td>
+          <td>{trasnsaction.Company}</td>
+          <td>{trasnsaction.Amount}</td>
+        </tr>
+      </tbody>
       ))}
-    </ul>
+    </Table>
   );
 };
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import { Table } from "react-bootstrap";
 import Trasnsactions from "./components/Trasnsactions";
 
 
@@ -25,13 +24,15 @@ const App = () => {
     fetchTrasnsactions();
   }, []);
 
-  // console.log("++++++++++",trasnsactions);
+  const indexOfLastTxn = currentPage * txnPerPage;
+  const indexOfFirstTxn = indexOfLastTxn - txnPerPage;
+  const currentTxns = trasnsactions.slice(indexOfFirstTxn, indexOfLastTxn);
 
   return (
     <div className="container mt-5">
-      <h1 className="text-primary mb-3">Bench Test</h1>
+      <h1 className="text-center text-primary mb-3">Bench Test</h1>
       <ul className="mb-4">
-        <Trasnsactions trasnsactions={trasnsactions} loading={loading} />
+        <Trasnsactions trasnsactions={currentTxns} loading={loading} />
       </ul>
     </div>
   );
