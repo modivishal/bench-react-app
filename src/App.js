@@ -21,10 +21,12 @@ const App = () => {
     fetchTrasnsactions();
   }, []);
 
+  //Get Current Trasnsactions
   const indexOfLastTxn = currentPage * txnPerPage;
   const indexOfFirstTxn = indexOfLastTxn - txnPerPage;
   const currentTxns = trasnsactions.slice(indexOfFirstTxn, indexOfLastTxn);
 
+  //Pagination Code
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
